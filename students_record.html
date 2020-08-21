@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="students_record.css" type="text/css">
+    <title>MIT Marksheet</title>
+</head>
+
+<body>
+    <header>
+        <div class="banner" style="width: 100%;color: white;" >
+            <h1 style="font-size:35px; font-weight:700; color:blue">MIT Institute of Technology</h1>
+            <h2>Dr. Babasaheb Ambedkar Marathwada University</h2>
+            <p>Beed Bypass Road, Satara Village Road, Aurangabad-431010, Maharashtra State, INDIA</p>
+        </div>
+    </header>
+    
+    <form action="#" method="post">
+        <div class="sprofile">
+            <h1>Student Profile:</h1><br> 
+            <hr> <br>
+        
+            <label for="sname">Student Name : </label>
+            <input type="text" id="sname" name="sname" required pattern="[a-zA-Z]*" placeholder="Enter Student full name" style="margin-left: 1.6%; width: 74%;"><br>
+            
+            <label for="lname">Roll No.: </label>
+            <input type="text" id="rno" name="rno" required pattern="[a-zA-Z0-9]+" placeholder="Enter Roll no." style="margin-left: 7.5%; width: 25%;">
+            
+            <label for="cls" style="margin-left: 9%;">Class : </label>
+            <input type="text" id="cls" name="cls" placeholder="Enter Class" style="margin-left: 7%; width: 25%;"><br><br>
+    
+            <hr><br>
+        
+            <h1>Student Mark Report:</h1><br>
+        
+            <table id="emptbl" style="margin-left: 0px;">
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Total mark</th> 
+                    <th>Obtained mark</th> 
+                </tr> 
+
+                <tr> 
+                    <td id="col0"><input type="text"  name="subcode[]" value="" /></td> 
+                    <td id="col1"><input type="text" name="subname[]" value="" /></td> 
+                    <td id="col2"><input type="text" class="txt" name="tlmark[]" value="" /></td>          
+                    <td id="col3"><input type="text"  name="obtmark[]" value=""/></td> 
+                </tr>  
+            </table> 
+            
+            <tr> 
+                <td><input type="button" value="Add Subject" onclick="addSub()" /></td> 
+                <td><input type="button" value="Delete Subject" onclick="deleteSub()" /></td> <br>
+            </tr> 
+
+            
+            <div class="btn" >
+                <button>Submit</button>
+                <a href="student_marksheet.html" id="print" style="color: white; text-decoration: none;" onclick="myFunction()" >Print</a> 
+            </div>
+        </div>
+    </form> 
+
+
+</body>
+
+
+
+<script type="text/javascript">
+
+    function addSub(){ 
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        var cellCount = table.rows[0].cells.length; 
+        var row = table.insertRow(rowCount);
+        for(var i =0; i < cellCount; i++){
+            var cell = 'cell'+i;
+            cell = row.insertCell(i);
+            var copycel = document.getElementById('col'+i).innerHTML;
+            cell.innerHTML=copycel;
+            if(i == 3){ 
+                var tableinput = document.getElementById('col3').getElementsByTagName('input'); 
+                
+            }
+        }
+    }
+
+    function deleteSub(){
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        if(rowCount > '2'){
+            var row = table.deleteRow(rowCount-1);
+            rowCount--;
+        }
+        else{
+            alert('There should be atleast one row');
+        }
+    }
+
+    </script>
+</html>
